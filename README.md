@@ -1,38 +1,19 @@
 # VLM Hiking Trail Hazard Assessment
 
-Python scripts and supporting material for the evaluation of Vision–Language Models (VLMs) in automated hiking trail hazard identification from photographic imagery.
+Python scripts and supporting material for the evaluation of Vision–Language Models (VLMs) in automated hiking trail hazard assessment from photographic imagery.
 
 This repository accompanies the manuscript:
 
-**Identification of Natural and Safety Hazards on Hiking Trails Using Vision–Language Models**
+**Assessing Natural and Trail Safety Hazards on Hiking Trails Using Vision–Language Models**
 
 The study evaluates the capability of multiple Vision–Language Models to identify:
 
 * **Natural hazards** (e.g., fog, landslides, wildfire exposure, wind-related conditions)
 * **Trail safety hazards** (e.g., damaged surfaces, erosion, degraded infrastructure)
 * **Overall trail danger level**
+* **Photo spatial location**
 
 using photographic data collected across the official hiking trail network of Madeira Island.
-
----
-
-# Study Overview
-
-The workflow compares multiple state-of-the-art Vision–Language Models under two prompting strategies:
-
-* **Unconstrained prompting**
-  Open-ended hazard interpretation without predefined guidance.
-
-* **Constrained prompting**
-  Hazard identification guided by a predefined hazard taxonomy.
-
-The evaluation assesses model performance through:
-
-* Recall
-* False Discovery Rate (FDR)
-* Risk evaluation agreement
-* Processing time
-* Spatial inference capability
 
 ---
 
@@ -43,7 +24,7 @@ The evaluation assesses model performance through:
 * **Mistral 3 Large**
 * **Llama 4 Scout**
 
-Each model was evaluated under both prompting strategies.
+Each model was evaluated under both constrained and unconstrained prompting strategies.
 
 ---
 
@@ -51,35 +32,26 @@ Each model was evaluated under both prompting strategies.
 
 ## Model Evaluation Scripts
 
-### GPT-4o
+Scripts are found under /scripts
+
+### Constrained
 
 * `chatGPTConstrained.py`
-* `chatGPTUnconstrained.py`
-
-### Gemini
-
 * `geminiConstrained.py`
-* `geminiUnconstrained.py`
-
-### Llama
-
 * `llamaConstrained.py`
-* `llamaUnconstrained.py`
-
-### Mistral
-
 * `mistralConstrained.py`
+
+### Unconstrained
+
+* `chatGPTUnconstrained.py`
+* `geminiUnconstrained.py`
+* `llamaUnconstrained.py`
 * `mistralUnconstrained.py`
-
-## Visualisation Scripts
-
-* Confusion matrix generation
-* Radar plot generation
-* Performance visualisation scripts
 
 ## Dataset
 
 The dataset consists of **50 hiking trail photographs** collected across Madeira Island.
+Photos are located on /photoDataset
 
 It includes:
 
@@ -89,19 +61,19 @@ It includes:
 
 A companion **KMZ file** provides the spatial location of all photographs.
 
-To visualise images inside Google Earth, keep the KMZ file **one directory level above** the image folder.
+To visualize images inside Google Earth, keep the KMZ file **one directory level above** the image folder.
 
 ---
 
 # Computational Requirements
 
-The scripts were tested on a standard desktop environment.
+The scripts were tested on a standard laptop environment.
 
 ## Minimum Requirements
 
 * Standard desktop or laptop computer
 * Stable internet connection
-* Python 3.10 or newer
+* Python 3.x
 * Valid API access credentials for the corresponding VLM providers
 
 No GPU or specialised hardware is required.
@@ -118,7 +90,7 @@ Install Python dependencies:
 pip install -r requirements.txt
 ```
 
-If no `requirements.txt` is provided, install manually:
+If needed, install manually:
 
 ```bash
 pip install openai google-genai groq mistralai pillow pydantic
@@ -186,7 +158,8 @@ cd vlm-hiking-trail-hazards
 ```bash
 pip install -r requirements.txt
 ```
-
+Alternatively, install dependencies manually as per the intructions above.
+ 
 ## 3. Download dataset
 
 Place all images in the designated input folder.
